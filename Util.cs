@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using SkiaSharp;
 
 namespace CatWorx.BadgeMaker
 {
@@ -37,6 +38,14 @@ namespace CatWorx.BadgeMaker
                 }
             }
         }
-
+        async public static Task MakeBadges(List<Employee> employees)
+        {
+            // Create image from encoded stream
+            SKImage newImage = SKImage.FromEncodedData(File.OpenRead("badge.png"));
+            // Encode data in a certain format, the default(blank) is .png
+            SKData data = newImage.Encode();
+            // Converts a file to a stream, then Takes the stream and savese the data
+            data.SaveTo(File.OpenWrite("data/employeeBadge.png"));
+        }
     }
 }
