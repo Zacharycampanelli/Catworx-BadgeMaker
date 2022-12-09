@@ -8,7 +8,7 @@ namespace CatWorx.BadgeMaker
 {
     class PeopleFetcher
     {
-        public static List<Employee> GetEmployees()
+        async public static Task<List<Employee>> GetEmployees()
         {
             List<Employee> employees = new List<Employee>();
             // Collect user values until the value is an empty string
